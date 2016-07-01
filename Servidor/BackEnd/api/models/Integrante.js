@@ -6,9 +6,23 @@
 */
 
 module.exports = {
-
+  schema:true,
   attributes: {
-
+    nombre:{
+      type:'string',
+      required:true
+    },
+    profesion:{
+      type:'string',
+      enum:['Estudiante','Egresado','Independiente','Graduado'],
+      required:true
+    },
+    universidad:{
+      type:'string'
+    },
+    trabajoActual:{
+      type:'string'
+    }
   }
 };
 
