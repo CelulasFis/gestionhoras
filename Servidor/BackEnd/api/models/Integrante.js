@@ -22,6 +22,10 @@ module.exports = {
     },
     trabajoActual: {
       type: 'string'
+    },
+    integrantes: {
+      collection: 'integrantesdeproyecto',
+      via: 'idIntegrante'
     }
   }
 };

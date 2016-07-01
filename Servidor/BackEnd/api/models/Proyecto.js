@@ -14,7 +14,7 @@ module.exports = {
       required: true
     },
     descripcion: {
-      type: 'string'
+      type: 'text'
     },
     estado: {
       type: 'string',
@@ -24,6 +24,10 @@ module.exports = {
     },
     fotoURL: {
       type: 'string'
+    },
+    integrantes: {
+      collection: 'integrantesdeproyecto',
+      via: 'idProyecto'
     }
   }
 };
