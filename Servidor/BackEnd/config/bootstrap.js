@@ -13,27 +13,27 @@ module.exports.bootstrap = function (cb) {
 
   //Definir Integrantes
 
-  let integranteAdrian = {
+  var integranteAdrian = {
     nombre: 'Adrian Eguez',
     profesion: 'Estudiante',
-    universidad: ,
-    trabajoActual:
+    universidad: 'Escuela Politécnica Nacional',
+    trabajoActual:'Pasante'
   }
-  let integranteCarlos = {
+  var integranteCarlos = {
     nombre: 'Carlos Mantilla',
     profesion: 'Egresado',
-    universidad: ,
-    trabajoActual:
+    universidad: 'Escuela Politécnica Nacional',
+    trabajoActual:'Pasante'
   }
-  let integranteJose = {
+  var integranteJose = {
     nombre: 'Jose Carrillo',
     profesion: 'Graduado',
-    universidad: ,
-    trabajoActual:
+    universidad: 'Escuela Politécnica Nacional',
+    trabajoActual:'Profesor EPN'
   }
 
 
-  let crearDatos = function () {
+  var crearDatos = function () {
 
     crearIntegrantes(integranteAdrian);
     crearIntegrantes(integranteCarlos);
@@ -41,7 +41,7 @@ module.exports.bootstrap = function (cb) {
 
   }
 
-  let crearIntegrantes = function (integrante) {
+  var crearIntegrantes = function (integrante) {
 
     Integrante
       .create(integrante)
@@ -49,12 +49,14 @@ module.exports.bootstrap = function (cb) {
         if (err) {
           console.log('Error');
         } else {
-          console.log('Integrante creado correctamente: ' + integranteCreado);
+          console.log('Integrante creado correctamente: ');
+          console.log(integranteCreado)
         }
       });
 
   }
 
+  crearDatos()
   // It's very important to trigger this callback method when you are finished
   // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
   cb();
