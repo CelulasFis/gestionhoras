@@ -26,6 +26,10 @@ module.exports = {
     integrantes: {
       collection: 'integrantesdeproyecto',
       via: 'idIntegrante'
+    },
+    entregables: {
+      collection: 'entregable',
+      via: 'idIntegrante'
     }
   }
 };

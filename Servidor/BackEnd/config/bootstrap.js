@@ -54,19 +54,35 @@ module.exports.bootstrap = function (cb) {
   }
 
   //Definir Integrantes
-
   var integranteProyecto1 = {
     esCoordinador: 'Coordinador'
   }
-
   var integranteProyecto2 = {
     esCoordinador: 'Integrante'
   }
-
   var integranteProyecto3 = {
     esCoordinador: 'Integrante'
   }
 
+  //Definir Entregables
+
+  var entregable1 = {
+    descripcion: 'Guion y Videos Capitulo 1',
+    horas: 8,
+    semanaEntrega: '2016 06 20 - 24'
+  }
+
+  var entregable2 = {
+    descripcion: 'Guion y Videos Capitulo 2',
+    horas: 8,
+    semanaEntrega: '2016 06 27 - 01'
+  }
+
+  var entregable3 = {
+    descripcion: 'Guion y Videos Capitulo 3',
+    horas: 8,
+    semanaEntrega: '2016 07 04 - 08'
+  }
 
 
   //funciones
@@ -103,7 +119,6 @@ module.exports.bootstrap = function (cb) {
 
   }
 
-
   function crearProyecto(proyecto, idIntegrante) {
     Proyecto
       .create(proyecto)
@@ -115,31 +130,45 @@ module.exports.bootstrap = function (cb) {
           crearIntegranteProyecto(idIntegrante, proyectoCreado.id, integranteProyecto1);
           crearIntegranteProyecto(idIntegrante, proyectoCreado.id, integranteProyecto2);
           crearIntegranteProyecto(idIntegrante, proyectoCreado.id, integranteProyecto3);
+
+          crearEntregable(idIntegrante, proyectoCreado.id, entregable1);
+          crearEntregable(idIntegrante, proyectoCreado.id, entregable2);
+          crearEntregable(idIntegrante, proyectoCreado.id, entregable3);
+
         }
       });
 
   }
 
-  //
-  //
-  //
-    function crearIntegranteProyecto(idIntegrante, idProyecto, integrante) {
-      integrante.idIntegrante = idIntegrante;
-      integrante.idProyecto = idProyecto;
-      IntegrantesDeProyecto
-        .create(integrante)
-        .exec(function (err, proyectoCreado) {
-          if (err) {
-            console.log('Error');
-          } else {
-            console.log('Integrante anadido correctamente: ');
-            console.log(integrante)
-          }
-        });
-    }
-  //
+  function crearIntegranteProyecto(idIntegrante, idProyecto, integrante) {
+    integrante.idIntegrante = idIntegrante;
+    integrante.idProyecto = idProyecto;
+    IntegrantesDeProyecto
+      .create(integrante)
+      .exec(function (err, integranteDeProyectoCreado) {
+        if (err) {
+          console.log('Error');
+        } else {
+          console.log('Integrante de Proyecto anadido correctamente: ');
+          console.log(integranteDeProyectoCreado)
+        }
+      });
+  }
 
-
+  function crearEntregable(idIntegrante, idProyecto, entregable) {
+    entregable.idIntegrante = idIntegrante;
+    entregable.idProyecto = idProyecto;
+    Entregable
+      .create(entregable)
+      .exec(function (err, entregableCreado) {
+      if (err) {
+        console.log('Error');
+      } else {
+        console.log('Entregable anadido correctamente: ');
+        console.log(entregableCreado)
+      }
+    });
+  }
 
 
   // It's very important to trigger this callback method when you are finished

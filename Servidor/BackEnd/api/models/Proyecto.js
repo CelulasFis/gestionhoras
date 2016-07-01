@@ -28,6 +28,10 @@ module.exports = {
     integrantes: {
       collection: 'integrantesdeproyecto',
       via: 'idProyecto'
+    },
+    entregables: {
+      collection: 'entregable',
+      via: 'idProyecto'
     }
   }
 };
